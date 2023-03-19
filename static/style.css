@@ -1,0 +1,94 @@
+body {
+    font-family: "Yu Mincho";
+    text-align: justify;
+    counter-reset: h1-count 0;
+}
+div {counter-reset: h1-count 0;}
+
+@font-face {
+    font-family: section;
+    src: "SimSun";
+    unicode-range: U+0030-0039;
+}
+
+h1, h2, h3 {
+    font-family: "SimSun";
+    /* font-family: section; */
+}
+
+.hljs p {
+    text-indent: 0;
+}
+
+p:has(img) {
+    text-indent: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    text-indent: 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    border: none;
+    border-left: 4px red solid;
+    /* padding: 0.2rem 0; */
+    padding-left: 1rem;
+}
+h1:not(.not-contents), ol.section > li {
+    list-style: none;
+    counter-reset: h2-count 0;
+    counter-increment: h1-count 1;
+}
+ol.section {
+    margin: 0;
+    padding: 0;
+}
+h1:not(.not-contents)::before, ol.section > li::before {
+    content: counter(h1-count) ". ";
+}
+
+h2 {font-size: 1.2rem;}
+h2:not(.not-contents), ol.subsection > li {
+    list-style: none;
+    counter-reset: h3-count 0;
+    counter-increment: h2-count 1;
+}
+ol.subsection {
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
+}
+h2:not(.not-contents)::before, ol.subsection > li::before {
+    content: counter(h1-count) "-" counter(h2-count) " ";
+}
+
+h3 {font-size: 1.1rem;}
+h3, ol.subsubsection > li {
+    list-style: none;
+    counter-increment: h3-count 1;
+}
+ol.subsubsection {
+    margin: 0;
+    padding: 0;
+    margin-left: 2rem;
+}
+h3::before, ol.subsubsection > li::before {
+    content: counter(h1-count) "-" counter(h2-count) "-" counter(h3-count) " ";
+}
+
+/* cover */
+div#cover {
+    text-align: center;
+}
+div#cover > h1 {
+    border: none;
+    margin-top: 10rem;
+    font-size: 3rem;
+}
+div#cover > h2 {
+    font-size: 2rem;
+    margin-bottom: 30rem;
+}
